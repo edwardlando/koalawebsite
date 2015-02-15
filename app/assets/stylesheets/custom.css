@@ -1,0 +1,41 @@
+html, body {
+	background-color: #5C5C5C;
+}
+
+.koala-link {
+	color: #E4ABF6;
+	font-family: "Arial";
+	font-size: 20px;
+	text-decoration: none;
+	border-bottom: 3px solid #E4ABF6;
+
+}
+
+.wrapper {
+	text-align: center;
+	padding-top: 120px;
+}
+
+
+.koala {
+  margin: auto;
+  position: absolute;
+  top: 20; left: 0; bottom: 0; right: 0;
+  margin-bottom: 50px;
+}
+
+
+@media (max-width: 600px) {
+	.koala-image {
+		width: 400px;
+	}
+
+
+	.koala {
+	  margin: auto;
+	  position: absolute;
+	  top: 50; left: 0; bottom: 0; right: 0;
+	  margin-bottom: 140px;
+	}
+
+}
