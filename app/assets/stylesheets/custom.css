@@ -1,5 +1,5 @@
 html, body {
-	background-color: #5C5C5C;
+	background-color: #F0F0F0;
 }
 
 .koala-link {
@@ -22,6 +22,21 @@ html, body {
   position: absolute;
   top: 20; left: 0; bottom: 0; right: 0;
   margin-bottom: 50px;
+}
+
+.other-links {
+	margin-top: 30px;
+	color: #E4ABF6;
+	font-family: "Arial";
+	font-size: 12px;
+}
+
+.other-links a {
+	color: #E4ABF6;
+	font-family: "Arial";
+	font-size: 12px;
+	text-decoration: none;
+	/* border-bottom: 2px solid #E4ABF6; */
 }
 
 
