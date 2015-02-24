@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'rules' => 'pages#rules'
   get 'terms' => 'pages#terms'
   get 'privacy' => 'pages#privacy'
+  get 'dashingdashboard' => 'pages#dashboard'
+  post 'makePost' => "pages#makePost"
+  post 'makeComment' => "pages#makeComment"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

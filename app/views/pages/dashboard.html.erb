@@ -1,0 +1,83 @@
+
+<div class="posts">
+	<h1>Most recent posts</h1> <!-- add ability to comment on this post -->
+
+	<% @posts.each do |p| %>
+	    <%= p["text"] %><br/>
+		- <strong>@<%= p["author"] %></strong>
+		<!-- comment form -->
+		<div id="new-comment">
+			<%= form_for :comment, :url => url_for(:controller => 'pages', :action => 'makeComment'), :remote => true, :html => {:id => "comment-form"} do |f| %>
+		        <div class="form-row">
+		            <%= f.text_field :comment_text, :required => true, :class => "custom-comment-field", :placeholder => "Comment text" %>
+		            <%= f.text_field :comment_author, :required => true, :class => "custom-comment-field", :placeholder => "Comment author" %>
+		            <%= f.hidden_field :comment_postId, :value => p["objectId"] %>
+		        </div>
+		       
+		        <%= f.submit "Comment", :id => "comment" %>
+			<% end %>
+		</div>
+		<br/><br/><br/>
+	<% end %>
+</div>
+
+<div id="new-post">
+	<h1>Create a new post</h1>
+	<%= form_for :post, :url => url_for(:controller => 'pages', :action => 'makePost'), :remote => true, :html => {:id => "post-form"} do |f| %>
+	        <div class="form-row">
+		        <p><strong>Post text</strong></p>
+	            <%= f.text_field :post_text, :required => true, :class => "custom-field", :placeholder => "Post text" %>
+	        </div>
+	        <br/> <br/> 
+	        <div class="form-row">
+	            <p><strong>Post author</strong></p>
+	            <%= f.text_field :post_author, :required => true, :class => "custom-field", :id => "author-field", :placeholder => "Post author" %>
+	        </div>
+	        <%= f.submit "Post", :id => "post" %>
+	<% end %>
+</div>
+
+
+<style>
+	.posts, #new-post {
+		font-family: "Arial";
+		width: 600px;
+		margin-left: 60px;
+		float: left;
+	}
+	#new-post {
+		width: 400px;
+	}
+	.custom-field {
+		width: 400px;
+		height: 60px;
+		font-size: 14px;
+	}
+	.custom-comment-field {
+		width: 200px;
+		height: 60px;
+		font-size: 14px;
+	}
+	#author-field {
+		width: 200px;
+	}
+	#post, #comment {
+	  height: 72px;
+	  margin-top: 60px;
+	  border: none;
+	  outline: none;
+	  border-radius: 3px;
+	  color: white;
+	  text-align: center;
+	  background-color: #64BDDE;
+	  width: 400px;
+	  padding: 15px;
+	  font-size: 18px;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	#comment {
+		margin-top: 10px;
+		width: 150px;
+	}
+</style>
