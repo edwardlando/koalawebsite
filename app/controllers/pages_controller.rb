@@ -14,8 +14,16 @@ class PagesController < ApplicationController
 	def privacy
 	end
 	def dashboard
+		@posts_and_comments = {}
 		@posts = getPosts()
+
+        #Get comments for each post and store in a dictionnary.
+		@posts.each do |p|
+			comments = getComments(p["objectId"])
+			@posts_and_comments[p] = comments
+		end
 	end
+	
 	def makePost
 		postText = params[:post][:post_text]
 		postAuthor = params[:post][:post_author]

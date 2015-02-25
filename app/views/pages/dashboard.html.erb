@@ -1,10 +1,16 @@
 
 <div class="posts">
 	<h1>Most recent posts</h1> <!-- add ability to comment on this post -->
-
-	<% @posts.each do |p| %>
-	    <%= p["text"] %><br/>
-		- <strong>@<%= p["author"] %></strong>
+	<% @posts_and_comments.each do |p, comments| %>
+	    <div class="post">
+		    <%= p["text"] %><br/>
+			- <span class="author">@<%= p["author"] %></span>
+		</div>
+		<div class="comments">
+			<% comments.each do |c| %>
+				<div class="comment"><%= c["text"] %> - <span class="author">@<%= c["author"] %></span> </div>
+			<% end %>
+		</div>
 		<!-- comment form -->
 		<div id="new-comment">
 			<%= form_for :comment, :url => url_for(:controller => 'pages', :action => 'makeComment'), :remote => true, :html => {:id => "comment-form"} do |f| %>
@@ -44,6 +50,15 @@
 		width: 600px;
 		margin-left: 60px;
 		float: left;
+	}
+	.comments {
+		margin-top: 22px;
+		padding-left: 30px;
+		margin-bottom: 22px;
+	}
+	.author {
+		font-weight: bold;
+		color: #64BDDE;;
 	}
 	#new-post {
 		width: 400px;

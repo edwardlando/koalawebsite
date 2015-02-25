@@ -29,9 +29,16 @@ module PagesHelper
 		posts = Parse::Query.new("Posts").tap do |q|
 		  q.order_by = "createdAt"
 		  q.order    = :descending
-		  q.limit    = 30
+		  q.limit    = 3
 		end.get
 	end
+
+	def getComments(postId)
+		comments = Parse::Query.new("Comments").tap do |q|
+		  q.eq("postId", postId)
+		end.get
+	end
+
 end
 
 
