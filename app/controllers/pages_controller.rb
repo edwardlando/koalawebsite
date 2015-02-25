@@ -3,6 +3,8 @@ class PagesController < ApplicationController
     require 'parse-ruby-client'
     include PagesHelper
 
+    before_filter :authenticate, :only => [:dashboard, :makePost, :makeComment]
+
 	def home
 	end
 	def rules
