@@ -18,10 +18,17 @@ module PagesHelper
 		comment["postId"] = commentPostId
 		comment["commentLikeArr"] = []
 		comment["likes"] = 0
+		incrementCommentCount(commentPostId)
 		puts comment
 		puts "above is the comment before saving"
 		comment.save
 	end
+
+    def incrementCommentCount(postId)
+		post_for_comment = Parse::Query.new("Posts").eq("objectId", postId).get.first
+		post_for_comment["comments"] += 1
+		post_for_comment.save
+    end
 
 	# increment the number of replies for that post !!!!!!!
 
