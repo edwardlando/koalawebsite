@@ -23,12 +23,21 @@ module PagesHelper
 		comment.save
 	end
 
+	# increment the number of replies for that post !!!!!!!
+
 	def getPosts
 		posts = Parse::Query.new("Posts").tap do |q|
 		  q.order_by = "createdAt"
 		  q.order    = :descending
 		  q.limit    = 30
-		  #q.include  = "post"
 		end.get
 	end
 end
+
+
+# 	comments = Parse::Query.new("Comment").tap do |q|
+#   q.eq("post", Parse::Pointer.new({
+#     "className" => "Post",
+#     "objectId"  => "8TOXdXf3tz"
+#   }))
+# end.get
